@@ -18,14 +18,24 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Site Settings Properties</summary>
-	[PublishedModel("siteSettingsProperties")]
-	public partial class SiteSettingsProperties : PublishedElementModel
+	// Mixin Content Type with alias "mainNavigationProperties"
+	/// <summary>Main Navigation Properties</summary>
+	public partial interface IMainNavigationProperties : IPublishedElement
+	{
+		/// <summary>Main Navigation</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string MainNavigation { get; }
+	}
+
+	/// <summary>Main Navigation Properties</summary>
+	[PublishedModel("mainNavigationProperties")]
+	public partial class MainNavigationProperties : PublishedElementModel, IMainNavigationProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
-		public new const string ModelTypeAlias = "siteSettingsProperties";
+		public new const string ModelTypeAlias = "mainNavigationProperties";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
@@ -34,14 +44,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<SiteSettingsProperties, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<MainNavigationProperties, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public SiteSettingsProperties(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
+		public MainNavigationProperties(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -50,11 +60,16 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Site Name
+		/// Main Navigation
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("siteName")]
-		public virtual string SiteName => this.Value<string>(_publishedValueFallback, "siteName");
+		[ImplementPropertyType("mainNavigation")]
+		public virtual string MainNavigation => GetMainNavigation(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Main Navigation</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetMainNavigation(IMainNavigationProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "mainNavigation");
 	}
 }

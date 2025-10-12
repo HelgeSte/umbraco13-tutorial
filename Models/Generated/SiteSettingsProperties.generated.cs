@@ -18,24 +18,24 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	// Mixin Content Type with alias "taggingProperties"
-	/// <summary>Tagging Properties</summary>
-	public partial interface ITaggingProperties : IPublishedElement
+	// Mixin Content Type with alias "siteSettingsProperties"
+	/// <summary>Site Settings Properties</summary>
+	public partial interface ISiteSettingsProperties : IPublishedElement
 	{
-		/// <summary>Page Tags</summary>
+		/// <summary>Site Name</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		string PageTags { get; }
+		string SiteName { get; }
 	}
 
-	/// <summary>Tagging Properties</summary>
-	[PublishedModel("taggingProperties")]
-	public partial class TaggingProperties : PublishedElementModel, ITaggingProperties
+	/// <summary>Site Settings Properties</summary>
+	[PublishedModel("siteSettingsProperties")]
+	public partial class SiteSettingsProperties : PublishedElementModel, ISiteSettingsProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
-		public new const string ModelTypeAlias = "taggingProperties";
+		public new const string ModelTypeAlias = "siteSettingsProperties";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
@@ -44,14 +44,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<TaggingProperties, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<SiteSettingsProperties, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public TaggingProperties(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
+		public SiteSettingsProperties(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -60,16 +60,16 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Page Tags: Choose the text for this page
+		/// Site Name
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("pageTags")]
-		public virtual string PageTags => GetPageTags(this, _publishedValueFallback);
+		[ImplementPropertyType("siteName")]
+		public virtual string SiteName => GetSiteName(this, _publishedValueFallback);
 
-		/// <summary>Static getter for Page Tags</summary>
+		/// <summary>Static getter for Site Name</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static string GetPageTags(ITaggingProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "pageTags");
+		public static string GetSiteName(ISiteSettingsProperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "siteName");
 	}
 }

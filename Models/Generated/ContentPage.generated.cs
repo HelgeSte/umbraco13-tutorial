@@ -101,7 +101,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.10.1+a2c36d6")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("pageTags")]
-		public virtual string PageTags => global::Umbraco.Cms.Web.Common.PublishedModels.TaggingProperties.GetPageTags(this, _publishedValueFallback);
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent> PageTags => global::Umbraco.Cms.Web.Common.PublishedModels.TaggingProperties.GetPageTags(this, _publishedValueFallback);
 
 		///<summary>
 		/// Hide: Set this to true if you want to hide this page from search results (Umbraco Navi Hide)
