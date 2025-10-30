@@ -1,0 +1,10 @@
+﻿@* 
+inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.FooterContent> // need to 
+inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Blocks.BlockGridItem<ContentModels.FooterContent>>// remove "Umbraco.Cms.Web.Common.Views."
+*@
+@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<ContentModels.FooterContent>>//regenerate the models! 
+
+<h4 class="text-uppercase mb-4">@Model.Content.Title</h4>
+@Model.Content.Text
+

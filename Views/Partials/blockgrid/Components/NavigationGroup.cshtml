@@ -6,13 +6,15 @@
     <li class="nav-item mx-0 mx-lg-1 dropdown">
         @if(Model.Content.Link != null)
         {
-            <a class="nav-link py-3 px-0 px-lg-3 rounded" target="@Model.Content.Link.Target" href="@Model.Content.Link.Url" id="@Model.Content.Key.ToString("N")" role="button" data-bs-toggle="dropdown" area-expanded="false">
-                @Model.Content.Link.Name
+            <a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle" target="@Model.Content.Link.Target" 
+            href="@Model.Content.Link.Url" id="@Model.Content.Key.ToString("N")" role="button" data-bs-toggle="dropdown" area-expanded="false">
+                @Model.Content.Link.Name @Model.Content.Title
             </a>
         }
-        else if (!string.IsNullOrWhiteSpace(Model.Content.Title))
+        // if it doesn't have a link:
+        else if (!string.IsNullOrWhiteSpace(Model.Content.Title)) // if title is null or white space
         {
-            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#" id="@Model.Content.Key.ToString("N")" role="button" data-bs-toggle="dropdown" area-expanded="false">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle" href="#" id="@Model.Content.Key.ToString("N")" role="button" data-bs-toggle="dropdown" area-expanded="false">
                 @Model.Content.Title
             </a>
         }
