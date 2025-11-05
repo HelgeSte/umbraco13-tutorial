@@ -4,7 +4,8 @@
 	//var test = Model.IsFollowable;
 }
 
-@await Html.PartialAsync("header")
+@await Html.GetBlockGridHtmlAsync(Model, "headerContent")
+@*await Html.PartialAsync("header")*@
 @await Html.PartialAsync("portofolio")
 @await Html.PartialAsync("about")
 @await Html.PartialAsync("contact")
