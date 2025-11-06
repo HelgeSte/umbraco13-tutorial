@@ -5,13 +5,17 @@
 
 <header class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
+
         @if(Model.Content.Image != null){
             <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5" src="@Model.Content.Image.Url()" alt="..." />
+            <img class="masthead-avatar mb-5" 
+                src="@Model.Content.Image.Url()" 
+                alt="@Model.Content.Image.GetAltText()" /> // Knows about our extension method because of "@using Namespace.Extensions in _ViewImports"
+            <p style="color: #1abc9c;">@Model.Content.Image.GetLocation()</p>
         }
-        
+            
         <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap parado</h1>
+        <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
