@@ -4,7 +4,10 @@
 	//var test = Model.IsFollowable;
 }
 
+@* display Content Page->Content Properties(compositions)->Header Content/[BlockGrid]->Header Content->Standard Header(component): *@
 @await Html.GetBlockGridHtmlAsync(Model, "headerContent")
+@* display Content Page->Content Properties(compositions)->Main Content/[BlockGrid]->Main Content->RichText(component): *@
+@await Html.GetBlockGridHtmlAsync(Model, "mainContent")
 @*await Html.PartialAsync("header")*@
 @await Html.PartialAsync("portofolio")
 @await Html.PartialAsync("about")

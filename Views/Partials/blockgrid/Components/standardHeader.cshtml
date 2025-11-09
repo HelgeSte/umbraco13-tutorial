@@ -8,21 +8,33 @@
 
         @if(Model.Content.Image != null){
             <!-- Masthead Avatar Image-->
+            // GetCropUrl() instead of Url() to get url with query string in it (240 px wide in this exmample)
             <img class="masthead-avatar mb-5" 
-                src="@Model.Content.Image.Url()" 
+                src="@Model.Content.Image.GetCropUrl(240)" 
                 alt="@Model.Content.Image.GetAltText()" /> // Knows about our extension method because of "@using Namespace.Extensions in _ViewImports"
             <p style="color: #1abc9c;">@Model.Content.Image.GetLocation()</p>
         }
             
         <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
-        <!-- Icon Divider-->
-        <div class="divider-custom divider-light">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- Masthead Subheading-->
-        <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
+        <h1 class="masthead-heading text-uppercase mb-0">@Model.Content.Title</h1>
+        @if(!string.IsNullOrWhiteSpace(Model.Content.Subtitle)) //(Model.Content.Subtitle != null)
+        { <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Masthead Subheading-->
+            <p class="masthead-subheading font-weight-light mb-0">@Model.Content.Subtitle</p>
+        } else
+        {
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light" style="margin-bottom: 0px;padding-bottom: 0px;">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+        }
+       
     </div>
 </header>
