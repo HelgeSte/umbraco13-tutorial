@@ -1,15 +1,10 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HomePage>
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContentCage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	Layout = "Main.cshtml";
-	//var test = Model.IsFollowable;
 }
-
 @* display Content Page->Content Properties(compositions)->Header Content/[BlockGrid]->Header Content->Standard Header(component): *@
 @await Html.GetBlockGridHtmlAsync(Model, "headerContent")
 @* display Content Page->Content Properties(compositions)->Main Content/[BlockGrid]->Main Content->RichText(component): *@
 @await Html.GetBlockGridHtmlAsync(Model, "mainContent")
-
-@*await Html.PartialAsync("header")*@
-@await Html.PartialAsync("portofolio")
-@await Html.PartialAsync("about")
-@await Html.PartialAsync("contact")
