@@ -6,12 +6,17 @@
 @* added Umbraco.Cms.Core.Models.Blocks to view imports *@
 @* Bokmerke at 28:00: https://youtu.be/fifqN-V_dT8?t=1742 *@
 
+@{
+    if (Model?.Content?.Image == null || Model?.Content?.Link == null) return;
 <!-- Portfolio Item 1-->
 <div class="col-md-6 col-lg-4 mb-5">
-    <a href="@Model.Content.Link.Url" target="@Model.Content.Link.Target" title="@Model.Content.Link.Name">
+        <a href="@Model.Content.Link.Url" target="_blank" class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
         </div>
-        <img class="img-fluid" src="@Model.Content.Image.Url()" alt="@Model.Content.Image.GetAltText()" />
-    </div>
+        <img class="img-fluid" src="@Model.Content.Image.GetCropUrl(400,290)" alt="@Model.Content.Image.GetAltText()" />
+    </a>
 </div>
+
+}
+
