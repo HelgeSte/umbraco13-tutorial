@@ -1,0 +1,53 @@
+﻿@* 
+inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.FooterContent> // need to 
+inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Blocks.BlockGridItem<ContentModels.FooterContent>>// remove "Umbraco.Cms.Web.Common.Views."
+*@
+@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<ContentModels.CallToAction>>//regenerate the models! 
+
+@{
+    // assing block grid id's to variables
+    const int TITLE_AREA = 0;   // Block grid id = 0
+    const int CONTENT_AREA = 1; // block grid id = 1
+    const int LINK_AREA = 2;    // block grid id = 2
+}
+
+<section class="page-section bg-primary text-white mb-0" id="about">
+    <div class="container">
+        <div class="text-white">
+            <!-- About Section Heading-->
+            @await Html.GetBlockGridItemAreaHtmlAsync(Model.Areas.ElementAt(TITLE_AREA))
+        </div>
+        <!-- About Section Content-->
+        <div class="row">
+            <div class="col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
+            <div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+        </div>
+
+        @{
+            var linkArea = Model.Areas.ElementAt(LINK_AREA); // using block grid id
+        }
+
+        @if(linkArea != null && linkArea.Any())
+        {
+            foreach(var item in linkArea)
+            {
+                var iconLink = item.Content as IconLink;
+                if(iconLink != null)
+                {
+                     <!-- About Section Button -- fa = font awesome-->
+                    <div class="text-center mt-4">
+                        <a class="btn btn-xl btn-outline-light" href="@iconLink.Link.Url" target="_blank">
+                            
+                            <span class="icon-link">
+                                <our-svg media-item="iconLink.Icon" class="svg-inline-fa fa-fw text-white"></our-svg>
+                            </span>
+                            @iconLink.Link.Name
+                        </a>
+                    </div>
+                }
+            }
+        }
+       
+    </div>
+</section>
