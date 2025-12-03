@@ -4,17 +4,24 @@
 @* Generated Models->RichText.generated.cs.*@
 @inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<ContentModels.RichText>>//regenerate the models! 
 
-<div class="container my-5">
-    <div class="col-lg-8 mx-auto"">
-        @if (Model.Content.Text != null)
-        {
+@{
+    var hasContainer = ViewData["hasContainer"] == "true"; // passed from callToAction
+}
+
+@if (hasContainer)
+{
+    @Model.Content.Text
+}
+else
+{ // this is the code that we removed at ca. 36 minutes
+    <div class="container my-5">
+        <div class="col-lg-8 mx-auto">
             @Model.Content.Text
-        } 
-        else {
-                <p>To lazy to type a real error message</p>
-        }
+        </div>
     </div>
-</div>
+}
+
+
 
 
 

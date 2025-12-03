@@ -10,6 +10,7 @@ inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Blocks.Bl
     const int TITLE_AREA = 0;   // Block grid id = 0
     const int CONTENT_AREA = 1; // block grid id = 1
     const int LINK_AREA = 2;    // block grid id = 2
+    ViewData["hasContainer"] = "true"; // 1 way to pass data from view to another
 }
 
 <section class="page-section bg-primary text-white mb-0" id="about">
@@ -20,8 +21,39 @@ inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Blocks.Bl
         </div>
         <!-- About Section Content-->
         <div class="row">
-            <div class="col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
-            <div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+            @{
+                var contentArea = Model.Areas.ElementAt(CONTENT_AREA);
+                if(contentArea != null && contentArea.Any())
+                {
+                    var classToApply = "";
+                    var itemCount = contentArea.Count;
+                    var i = 0;
+                    foreach (var item in contentArea)
+                    {
+                        if(itemCount > 1)
+                        {
+                            if(itemCount > 1 && i % 2 == 1) 
+                            {
+                                classToApply = "me-auto";
+                            }
+                            else
+                            {
+                                classToApply = "ms-auto";
+                            }
+                        } 
+                        else
+                        {
+                            classToApply = "mx-auto";
+                        }
+
+                        <div class="col-lg-@item.ColumnSpan @(classToApply)">
+                            @await Html.PartialAsync("blockgrid/Components/richtext", item)
+                        </div>
+                        i++;
+                    }
+                }
+            }
+
         </div>
 
         @{
@@ -40,7 +72,7 @@ inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Blocks.Bl
                         <a class="btn btn-xl btn-outline-light" href="@iconLink.Link.Url" target="_blank">
                             
                             <span class="icon-link">
-                                <our-svg media-item="iconLink.Icon" class="svg-inline-fa fa-fw text-white"></our-svg>
+                                <our-svg media-item="iconLink.Icon" class="svg-inline--fa fa-fw icon-link text-white"></our-svg>
                             </span>
                             @iconLink.Link.Name
                         </a>
