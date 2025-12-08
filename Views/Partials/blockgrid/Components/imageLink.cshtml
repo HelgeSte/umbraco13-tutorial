@@ -10,7 +10,7 @@
     if (Model?.Content?.Image == null || Model?.Content?.Link == null) return;
 <!-- Portfolio Item 1-->
 <div class="col-md-6 col-lg-4 mb-5">
-        <a href="@Model.Content.Link.Url" target="_blank" class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+        <a href="@Model.Content.Link.Url" target="_blank" class="portfolio-item mx-auto">
         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
         </div>
@@ -20,3 +20,13 @@
 
 }
 
+@*
+<-- WITH MODALS (removed modals, because left click doesn't open links, but right click and open in new tab/windows does) -->
+<div class="col-md-6 col-lg-4 mb-5">
+        <a href="@Model.Content.Link.Url" target="_blank" class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+        </div>
+        <img class="img-fluid" src="@Model.Content.Image.GetCropUrl(400,290)" alt="@Model.Content.Image.GetAltText()" />
+    </a>
+</div>}*@

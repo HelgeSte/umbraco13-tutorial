@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="App_Plugins\BlockGridPreviews\imageLink.html" />
+    <Content Include="App_Plugins\BlockGridPreviews\image.html" />
+    <Content Include="App_Plugins\BlockGridPreviews\title.html" />
     <Content Include="App_Plugins\BlockGridPreviews\navigationgroup.html" />
     <Content Include="App_Plugins\BlockGridPreviews\package.manifest" />
   </ItemGroup>
