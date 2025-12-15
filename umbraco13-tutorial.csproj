@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Our.Umbraco.Slimsy" Version="5.1.2" />
     <Content Update="Views\Partials\blockgrid\Components\imageWithCaption.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

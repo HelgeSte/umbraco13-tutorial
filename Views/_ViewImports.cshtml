@@ -7,6 +7,12 @@
 @using umbraco13_tutorial.Extensions @* (using Freelancer.Extension) *@
 @using Umbraco.Cms.Core.Models.Blocks
 @using Umbraco.Cms.Core.Models.PublishedContent
+@*add slimsy*@
+@using Slimsy.Enums
+@using Slimsy.Extensions
+@addTagHelper *, Slimsy
+@inject Slimsy.Services.SlimsyService SlimsyService
+@using Slimsy.Extensions
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper *, Smidge
