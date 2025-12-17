@@ -1,23 +1,22 @@
 ﻿using Umbraco.Cms.Core.Models;
 
-namespace umbraco13_tutorial.Extensions
+namespace umbraco13_tutorial.Extensions;
+
+public static class MediaWithCropsExtensions
 {
-    public static class MediaWithCropsExtensions
+    public static string GetAltText(this MediaWithCrops mediaItem, string altTextAlias = "altText")
     {
-        public static string GetAltText(this MediaWithCrops mediaItem, string altTextAlias = "altText")
-        {
-            var altText = mediaItem.Value<string>(altTextAlias); // return value that is associated with the alias from the mediaItem object
-            if (string.IsNullOrWhiteSpace(altText)) return string.Empty;
+        var altText = mediaItem.Value<string>(altTextAlias); // return value that is associated with the alias from the mediaItem object
+        if (string.IsNullOrWhiteSpace(altText)) return string.Empty;
 
-            return altText;
-        }
+        return altText;
+    }
 
-        public static string GetLocation(this MediaWithCrops mediaItem, string locationAlias = "location")
-        {
-            var location = mediaItem.Value<string>(locationAlias);
-            if (string.IsNullOrWhiteSpace(location)) return string.Empty;
+    public static string GetLocation(this MediaWithCrops mediaItem, string locationAlias = "location")
+    {
+        var location = mediaItem.Value<string>(locationAlias);
+        if (string.IsNullOrWhiteSpace(location)) return string.Empty;
 
-            return location;
-        }
+        return location;
     }
 }
