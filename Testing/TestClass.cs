@@ -1,13 +1,9 @@
 ﻿using Umbraco.Cms.Core.Services;
 namespace umbraco13_tutorial.Testing;
 
-public class TestClass
+public class TestClass(IMediaService mediaService)
 {
-    private readonly IMediaService _mediaService;
-    public TestClass(IMediaService mediaService)
-    {
-        _mediaService = mediaService;
-    }
+    private readonly IMediaService _mediaService = mediaService;
 
     public void DoSomething()
     {
